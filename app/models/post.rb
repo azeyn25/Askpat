@@ -5,5 +5,5 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   validates :headline, presence: true
   validates :description, presence: true, length: { minimum: 30 }
-  
+  has_one_attached :photo
 end

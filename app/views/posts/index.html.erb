@@ -1,1 +1,20 @@
-<h1> "Most recent posts" </h1>
+<div class="container mt-4">
+  <div class="cards" style="align-items: center; justify-content: center;" >
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post), class:"text" do %>
+        <div class="card" style="width: 18rem; height: 26rem; color: black;">
+          <% if post.photo.attached?  %>
+            <%= cl_image_tag post.photo.key, crop: :fill %>
+          <% else %>
+          <% end %>
+            <div class="card">
+              <div>
+                <h2><%= post.headline %></h2>
+                <p><%= post.description %></p>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

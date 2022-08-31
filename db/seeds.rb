@@ -35,13 +35,17 @@ post_tag.post = post
 post_tag.tag = Tag.find_by(name: "Visa")
 post_tag.save!
 
-# Post.create(
-#   user: User.first,
-#   headline: "I need help with freelance visa",
-#   description: " I have just received a freelance contract with a software development company and I need to renew my visa to freelance one, can some share theier experiences when it comes to freelance visa?",
-#   tag: "Visa"
-# )
-# new_post.save!
+post = Post.new(
+  user: User.first,
+  headline: "I need help with freelance visa",
+  description: " I have just received a freelance contract with a software development company and I need to renew my visa to freelance one, can some share theier experiences when it comes to freelance visa?"
+)
+post.save!
+post_tag = PostTag.new
+post_tag.post = post
+post_tag.tag = Tag.find_by(name: "Visa")
+post_tag.save!
+post.save!
 
 file = URI.open("app/assets/images/taxes.jpg")
 Post.create(
@@ -53,6 +57,6 @@ Post.create(
 post.save!
 post_tag = PostTag.new
 post_tag.post = post
-post_tag.tag = Tag.find_by(name: "Visa")
+post_tag.tag = Tag.find_by(name: "Translation")
 post_tag.save!
 post.photo.attach(io: file, filename: 'taxes', content_type: 'image/jpeg')

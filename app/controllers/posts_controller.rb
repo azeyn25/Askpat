@@ -30,11 +30,13 @@ class PostsController < ApplicationController
       flash.now[:error] = "Your post was not updated!"
       render :edit
     end
+  end
 
     def destroy
       @post = Post.find(params[:id])
       @post.destroy
       redirect_to post_path, status: :see_other
+    end
 
   private
 
